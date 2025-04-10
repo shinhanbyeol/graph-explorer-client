@@ -78,11 +78,11 @@ export default class WorkspaceService {
 
     const sqlPath = path.join(cachePath, 'works', serverId.toString(), graph);
     const jsonPath = path.join(cachePath, 'works', serverId.toString(), graph);
-    const sqlFile = `${randomId}_${name}.sql`;
-    const jsonFile = `${randomId}_${name}.json`;
+    const sqlFileName = `${randomId}_${name}`;
+    const jsonFileName = `${randomId}_${name}`;
 
-    fileWrite(sqlPath, '', sqlFile, 'sql');
-    fileWrite(jsonPath, {}, jsonFile, 'json');
+    fileWrite(sqlPath, '', sqlFileName, 'sql');
+    fileWrite(jsonPath, {}, jsonFileName, 'json');
 
     const workspaceId = await this.metaDb.run(
       `INSERT INTO tb_workspaces (server_id, graph, name, sql_path, json_path, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
@@ -90,8 +90,8 @@ export default class WorkspaceService {
         serverId,
         graph,
         name,
-        path.join(sqlPath, sqlFile),
-        path.join(jsonPath, jsonFile),
+        path.join(sqlPath, `${sqlFileName}.sql`),
+        path.join(jsonPath, `${jsonFileName}.json`),
         new Date().toISOString(),
         new Date().toISOString(),
       ],
