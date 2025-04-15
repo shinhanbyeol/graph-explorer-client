@@ -78,6 +78,8 @@ export default class WorkspaceService {
 
     const sqlPath = path.join(cachePath, 'works', serverId.toString(), graph);
     const jsonPath = path.join(cachePath, 'works', serverId.toString(), graph);
+    const resultsPath = path.join(cachePath, 'results', serverId.toString(), graph);
+    const workspacePath = path.join(cachePath, 'workspaces', serverId.toString(), graph);
     const sqlFileName = `${randomId}_${name}`;
     const jsonFileName = `${randomId}_${name}`;
 

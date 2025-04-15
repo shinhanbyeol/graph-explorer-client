@@ -84,11 +84,12 @@ const CodeEditor = ({
         .then((res: IPCResponse<ExecuteQueryResponseBy>) => {
           if (res?.success) {
             const queryResult = res.data;
+            const lastExecutedTime = Date.now();
             importGraphologyData(queryResult.result);
             setLabels(queryResult.labels);
             setNodesCount(queryResult.result.nodes.length);
             setEdgesCount(queryResult.result.edges.length);
-            setLastExecutedTime(Date.now());
+            setLastExecutedTime(lastExecutedTime);
           } else {
             alert(res.message);
           }

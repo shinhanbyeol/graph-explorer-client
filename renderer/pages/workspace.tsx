@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { use, useEffect, useMemo } from 'react';
 import { Main } from '../layout/Main/Main';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -7,8 +7,12 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   Stack,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
   Text,
-  useEditable,
 } from '@chakra-ui/react';
 import CodeEditor from '../components/features/CodeEditor';
 import Result from '../components/features/Result';
@@ -27,8 +31,15 @@ function WorkspacePage() {
     sessionId,
     workspaceName,
     workspaceSqlPath,
-    workspaceJsonPath,
+    workspaceJsonPath
   } = router.query;
+
+  // const resultTabs = useMemo(() => {
+  //   console.log(
+  //     '🚀 ~ file: workspace.tsx:21 ~ WorkspacePage ~ resultTabs:',
+  //     `${1}`,
+  //   )
+  // }, [serverId, graph, workspaceJsonPath]);
 
   // Check if the query is not null else return an error message
   if (
@@ -53,7 +64,7 @@ function WorkspacePage() {
 
   // graphology hook
   const { init } = useGraphology();
-  const { setLastInitTime } = useGraphologyStore();
+  const { lastExecutedTime, setLastInitTime } = useGraphologyStore();
 
   // initialize the graphology
   useEffect(() => {
@@ -71,6 +82,8 @@ function WorkspacePage() {
     workspaceSqlPath,
     workspaceJsonPath,
   ]);
+
+  useEffect(() => {}, [lastExecutedTime]);
 
   return (
     <React.Fragment>
@@ -93,8 +106,18 @@ function WorkspacePage() {
             <BreadcrumbItem>
               <Text fontSize={'sm'}>{workspaceName}</Text>
             </BreadcrumbItem>
+            <BreadcrumbItem>
+              <Text fontSize={'sm'}>{lastExecutedTime}</Text>
+            </BreadcrumbItem>
           </Breadcrumb>
           <Box position={'relative'} display={'block'} flex={1}>
+            <Tabs>
+              <TabList>
+                <Tab>One</Tab>
+                <Tab>Two</Tab>
+                <Tab>Three</Tab>
+              </TabList>
+            </Tabs>
             <Result
               workspaceName={workspaceName as string}
               workspaceJsonPath={workspaceJsonPath as string}

@@ -27,7 +27,14 @@ CREATE TABLE IF NOT EXISTS tb_workspaces (
 );
 `;
 
-const initSqls = [tb_servers, tb_workspaces];
+const _initSqls: {
+  tb_servers: string;
+  tb_workspaces: string;
+} = {
+  tb_servers,
+  tb_workspaces,
+};
 
-export const initTableCount = initSqls.length + 1;
+const initSqls = new Map(Object.entries(_initSqls));
+export const initTableCount = Object.keys(initSqls).length;
 export default initSqls;
