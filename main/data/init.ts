@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS tb_workspaces (
   name TEXT NOT NULL,
   sql_path TEXT,
   json_path TEXT,
+  result_path TEXT,
   created_at TEXT NOT NULL,
   updated_at TEXT NOT NULL
 );

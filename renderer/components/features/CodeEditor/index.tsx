@@ -115,6 +115,7 @@ const CodeEditor = ({
     };
   }, [handleClickOutside]);
 
+  // SQL 파일 읽기
   useEffect(() => {
     window.ipc
       .invoke('readFile/fullPath', workspaceSqlPath)
@@ -127,6 +128,10 @@ const CodeEditor = ({
       });
   }, [workspaceSqlPath]);
 
+  /**
+   * @title Run Query by Shortcut
+   * @description Run query by shortcut key (Ctrl + Enter or Cmd + Enter) / 단축키로 쿼리 실행 (Ctrl + Enter 또는 Cmd + Enter)
+   */
   const _runQueryByShortcut = useCallback(
     (e: KeyboardEvent) => {
       // ctrl + enter or cmd + enter
@@ -140,6 +145,11 @@ const CodeEditor = ({
     },
     [code, handleRunQuery],
   );
+
+  /**
+   * @title Editor Fold by Shortcut
+   * @description Fold editor by shortcut key (Esc) / 단축키로 에디터 접기 (Esc)
+   */
   const _expandEditorByShortcutEscape = useCallback(
     (e: KeyboardEvent) => {
       // press esc
@@ -149,6 +159,11 @@ const CodeEditor = ({
     },
     [setExpanded],
   );
+
+  /**
+   * @title Editor Expand by Shortcut
+   * @description Expand editor by shortcut key (Tab) / 단축키로 에디터 확장 (Tab)
+   */
   const _expandEditorByShortcutTab = useCallback(
     (e: KeyboardEvent) => {
       // press tab
@@ -159,6 +174,7 @@ const CodeEditor = ({
     [setExpanded],
   );
 
+  // 에디터 확장 단축키 등록
   useEffect(() => {
     window.removeEventListener('keydown', _expandEditorByShortcutEscape);
     window.removeEventListener('keydown', _expandEditorByShortcutTab);
@@ -169,6 +185,7 @@ const CodeEditor = ({
     }
   }, [expanded, _expandEditorByShortcutEscape, _expandEditorByShortcutTab]);
 
+  // 에디터 실행 단축키 등록
   useEffect(() => {
     window.addEventListener('keydown', _runQueryByShortcut);
     return () => {
