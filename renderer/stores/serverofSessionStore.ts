@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { AGE_FLAVOR } from '../types';
+import { AGE_FLAVOR } from '../utils/enum';
 
 interface ServerOfSession {
   id: number; // server id

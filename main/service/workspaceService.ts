@@ -1,8 +1,8 @@
 import path from 'path';
 import { convertKeysToCamelCase } from '../util/snakeToCamel';
-import { _Workspace, Workspace } from './types/common';
+import { _Workspace } from './types/common';
 import { v4 as uuidv4 } from 'uuid';
-import { fileWrite } from './fileService';
+import { fileWrite, makeDirectory } from './fileService';
 
 export default class WorkspaceService {
   metaDb;
@@ -29,12 +29,12 @@ export default class WorkspaceService {
    * @returns {Workspace} workspace
    * @memberof WorkspaceService
    */
-  async getWorkspace(id: string): Promise<Workspace> {
+  async getWorkspace(id: string): Promise<WorkspaceResponse> {
     const workspace = (await this._sqlitePromise(
       `SELECT * FROM tb_workspaces WHERE id = ?`,
       [id],
     )) as _Workspace;
-    return convertKeysToCamelCase(workspace[0]) as Workspace;
+    return convertKeysToCamelCase(workspace[0]) as WorkspaceResponse;
   }
 
   /**
@@ -44,7 +44,10 @@ export default class WorkspaceService {
    * @pram {String} serverId
    * @pram {String} graph
    */
-  async getWorkspaces(serverId: number, graph: string): Promise<Workspace[]> {
+  async getWorkspaces(
+    serverId: number,
+    graph: string,
+  ): Promise<WorkspaceResponse[]> {
     const sql = `SELECT * FROM tb_workspaces where server_id = ? and graph = ?`;
     const workspaces = (await this._sqlitePromise(sql, [
       serverId,
@@ -52,7 +55,7 @@ export default class WorkspaceService {
     ])) as _Workspace[];
     return workspaces.map((workspace) =>
       convertKeysToCamelCase(workspace),
-    ) as Workspace[];
+    ) as WorkspaceResponse[];
   }
 
   /**
@@ -76,24 +79,47 @@ export default class WorkspaceService {
     const { serverId, graph, name } = newWorkspace;
     const randomId = uuidv4();
 
-    const sqlPath = path.join(cachePath, 'works', serverId.toString(), graph);
-    const jsonPath = path.join(cachePath, 'works', serverId.toString(), graph);
-    const resultsPath = path.join(cachePath, 'results', serverId.toString(), graph);
-    const workspacePath = path.join(cachePath, 'workspaces', serverId.toString(), graph);
+    const sqlPath = path.join(
+      cachePath,
+      'works',
+      serverId.toString(),
+      graph,
+      name,
+      'sql',
+    );
+    const jsonPath = path.join(
+      cachePath,
+      'works',
+      serverId.toString(),
+      graph,
+      name,
+      'workspace_config',
+    );
+    const resultsPath = path.join(
+      cachePath,
+      'works',
+      serverId.toString(),
+      graph,
+      name,
+      'results',
+    );
+
     const sqlFileName = `${randomId}_${name}`;
     const jsonFileName = `${randomId}_${name}`;
 
     fileWrite(sqlPath, '', sqlFileName, 'sql');
     fileWrite(jsonPath, {}, jsonFileName, 'json');
+    makeDirectory(resultsPath);
 
     const workspaceId = await this.metaDb.run(
-      `INSERT INTO tb_workspaces (server_id, graph, name, sql_path, json_path, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO tb_workspaces (server_id, graph, name, sql_path, json_path, result_path, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         serverId,
         graph,
         name,
         path.join(sqlPath, `${sqlFileName}.sql`),
         path.join(jsonPath, `${jsonFileName}.json`),
+        path.join(resultsPath),
         new Date().toISOString(),
         new Date().toISOString(),
       ],

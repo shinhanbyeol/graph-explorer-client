@@ -13,7 +13,6 @@ import Styles from './CodeEditor.module.scss';
 import { PiPlay } from 'react-icons/pi';
 import _, { debounce } from 'lodash';
 import useGraphology from '../../../hooks/useGraphology';
-import { ExecuteQueryResponseBy, IPCResponse } from '../../../types';
 import { useGraphologyStore } from '../../../stores';
 
 interface CodeEditorProps {
@@ -32,8 +31,13 @@ const CodeEditor = ({
   const [fetching, setFetching] = useState<boolean>(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const { importGraphologyData } = useGraphology();
-  const { setEdgesCount, setNodesCount, setLastExecutedTime, setLabels } =
-    useGraphologyStore();
+  const {
+    graphology,
+    setEdgesCount,
+    setNodesCount,
+    setLastExecutedTime,
+    setLabels,
+  } = useGraphologyStore();
 
   const OS = navigator.platform;
 
@@ -85,7 +89,7 @@ const CodeEditor = ({
           if (res?.success) {
             const queryResult = res.data;
             const lastExecutedTime = Date.now();
-            importGraphologyData(queryResult.result);
+            importGraphologyData(graphology, queryResult.result);
             setLabels(queryResult.labels);
             setNodesCount(queryResult.result.nodes.length);
             setEdgesCount(queryResult.result.edges.length);

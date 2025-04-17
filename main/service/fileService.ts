@@ -8,6 +8,18 @@ interface FileServiceResponse {
 type FileExt = 'json' | 'sql' | 'txt';
 
 /**
+ * @description make directory
+ * @param path
+ * @return {void}
+ */
+export function makeDirectory(path: string): void {
+  if (!fs.existsSync(path)) {
+    fs.mkdirSync(path, { recursive: true });
+  }
+}
+
+
+/**
  * @description Write File
  * @param path
  * @param fileData

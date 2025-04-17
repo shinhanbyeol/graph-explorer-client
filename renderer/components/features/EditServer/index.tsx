@@ -1,5 +1,4 @@
 import React from 'react';
-import { AGE_FLAVOR, IPCResponse, ServerResponse } from '../../../types';
 
 import {
   ModalBody,
@@ -19,6 +18,7 @@ import {
   Select,
 } from '@chakra-ui/react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
+import { AGE_FLAVOR } from '../../../utils/enum';
 
 const EditServerModal = ({
   onClose,
@@ -316,7 +316,11 @@ const EditServerModal = ({
               <Button variant="ghost" mr={3} onClick={onClose}>
                 Close
               </Button>
-              <Button variant="submit" type="submit" isLoading={props.isSubmitting}>
+              <Button
+                variant="submit"
+                type="submit"
+                isLoading={props.isSubmitting}
+              >
                 Confirm
               </Button>
             </ModalFooter>

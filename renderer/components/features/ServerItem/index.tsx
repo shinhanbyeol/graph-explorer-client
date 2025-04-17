@@ -1,5 +1,4 @@
 import { memo, useState } from 'react';
-import { IPCResponse, ServerResponse } from '../../../types';
 import {
   AccordionItem,
   AccordionButton,

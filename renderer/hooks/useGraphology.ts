@@ -1,6 +1,7 @@
 import { MultiDirectedGraph } from 'graphology';
 import { useGraphologyStore } from '../stores/graphologyStore';
 import { useCallback } from 'react';
+import { Attributes } from 'graphology-types';
 
 export type Vertex = {
   key: string;
@@ -27,8 +28,9 @@ export type GraphData = {
   edges: Edge[];
 };
 
+type _Graphology = MultiDirectedGraph<Attributes, Attributes, Attributes>;
+
 const useGraphology = () => {
-  const graphology = useGraphologyStore((state) => state.graphology);
   const { initGraphology, updateGraphology } = useGraphologyStore();
 
   /**
@@ -54,7 +56,7 @@ const useGraphology = () => {
    * @returns {void}
    */
   const importGraphologyData = useCallback(
-    (data: GraphData) => {
+    (graphology: _Graphology, data: GraphData) => {
       if (!graphology) return;
       graphology.clear();
       data.nodes.forEach((node) => {
@@ -76,11 +78,10 @@ const useGraphology = () => {
       });
       updateGraphology(graphology);
     },
-    [graphology, updateGraphology],
+    [updateGraphology],
   );
 
   return {
-    graphology,
     init,
     importGraphologyData,
   };

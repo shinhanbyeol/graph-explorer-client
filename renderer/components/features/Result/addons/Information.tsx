@@ -78,9 +78,9 @@ function Information({
             alignItems={'center'}
           >
             {label}{' '}
-            {Object(properties)[style.text] && (
+            {Object(properties)[style?.text] && (
               <Mark fontSize={'xs'} color={'white'} ml={2}>
-                {Object(properties)[style.text]}
+                {Object(properties)[style?.text]}
               </Mark>
             )}
           </Text>

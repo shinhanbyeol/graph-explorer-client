@@ -1,9 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import {
-  createConnectionResponse,
-  IPCResponse,
-  ServerResponse,
-} from '../../../types';
 
 import {
   Accordion,

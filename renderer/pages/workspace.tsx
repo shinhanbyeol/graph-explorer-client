@@ -1,4 +1,4 @@
-import React, { use, useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { Main } from '../layout/Main/Main';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -6,12 +6,8 @@ import {
   Box,
   Breadcrumb,
   BreadcrumbItem,
+  Progress,
   Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
   Text,
 } from '@chakra-ui/react';
 import CodeEditor from '../components/features/CodeEditor';
@@ -31,36 +27,9 @@ function WorkspacePage() {
     sessionId,
     workspaceName,
     workspaceSqlPath,
-    workspaceJsonPath
+    workspaceJsonPath,
+    workspaceResultPath,
   } = router.query;
-
-  // const resultTabs = useMemo(() => {
-  //   console.log(
-  //     '🚀 ~ file: workspace.tsx:21 ~ WorkspacePage ~ resultTabs:',
-  //     `${1}`,
-  //   )
-  // }, [serverId, graph, workspaceJsonPath]);
-
-  // Check if the query is not null else return an error message
-  if (
-    !serverId ||
-    !graph ||
-    !sessionId ||
-    !workspaceName ||
-    !workspaceSqlPath ||
-    !workspaceJsonPath
-  ) {
-    return (
-      <React.Fragment>
-        <Head>
-          <title>Graph Explorer Client</title>
-        </Head>
-        <Main>
-          <Text fontSize={'4xl'}>Sorry!! something went wrong</Text>
-        </Main>
-      </React.Fragment>
-    );
-  }
 
   // graphology hook
   const { init } = useGraphology();
@@ -85,7 +54,24 @@ function WorkspacePage() {
 
   useEffect(() => {}, [lastExecutedTime]);
 
-  return (
+  return !serverId ||
+    !graph ||
+    !sessionId ||
+    !workspaceName ||
+    !workspaceSqlPath ||
+    !workspaceJsonPath ||
+    !workspaceResultPath ? (
+    <React.Fragment>
+      <Head>
+        <title>Graph Explorer Client</title>
+      </Head>
+      <Main>
+        <Stack h={'100%'} direction={'column'}>
+          <Progress size="xs" isIndeterminate colorScheme={'black'} />
+        </Stack>
+      </Main>
+    </React.Fragment>
+  ) : (
     <React.Fragment>
       <Head>
         <title>Graph Explorer Client</title>
@@ -106,25 +92,9 @@ function WorkspacePage() {
             <BreadcrumbItem>
               <Text fontSize={'sm'}>{workspaceName}</Text>
             </BreadcrumbItem>
-            <BreadcrumbItem>
-              <Text fontSize={'sm'}>{lastExecutedTime}</Text>
-            </BreadcrumbItem>
           </Breadcrumb>
           <Box position={'relative'} display={'block'} flex={1}>
-            <Tabs>
-              <TabList>
-                <Tab>One</Tab>
-                <Tab>Two</Tab>
-                <Tab>Three</Tab>
-              </TabList>
-            </Tabs>
-            <Result
-              workspaceName={workspaceName as string}
-              workspaceJsonPath={workspaceJsonPath as string}
-              sessionId={sessionId as string}
-              serverId={serverId as string}
-              graph={graph as string}
-            />
+            <Result workspaceResultPath={workspaceResultPath as string} />
             <CodeEditor
               workspaceSqlPath={workspaceSqlPath as string}
               sessionId={sessionId as string}

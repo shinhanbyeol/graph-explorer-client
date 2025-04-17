@@ -12,10 +12,9 @@ import CypherService from '../service/cypherService';
 import WorkspaceService from '../service/workspaceService';
 
 // types
-import { AGE_FLAVOR, ConnectionPool } from '../connections/types';
-import { type HandleResponse } from './types/response';
-import { Workspace, type Server } from '../service/types/common';
-
+import { HandleResponse } from './types';
+import { ConnectionPool } from '../connections/types';
+import { AGE_FLAVOR } from '../connections/enum';
 class IpcMainController {
   appData;
   connectionsMap: ConnectionsMap;
@@ -36,7 +35,7 @@ class IpcMainController {
      */
     ipcMain.handle(
       'getServers',
-      async (event): Promise<HandleResponse<Server[]>> => {
+      async (event): Promise<HandleResponse<ServerResponse[]>> => {
         try {
           const serverService = new ServerService(this.appData);
           const servers = await serverService.getServers();
@@ -561,7 +560,7 @@ class IpcMainController {
           serverId: number;
           graph: string;
         },
-      ): Promise<HandleResponse<Workspace[]>> => {
+      ): Promise<HandleResponse<WorkspaceResponse[]>> => {
         try {
           const workspaceService = new WorkspaceService(this.appData);
           const workspaces = await workspaceService.getWorkspaces(

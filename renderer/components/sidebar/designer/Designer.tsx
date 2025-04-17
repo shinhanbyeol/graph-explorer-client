@@ -14,7 +14,6 @@ import {
 import { useGraphologyStore } from '../../../stores';
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useWorkspaceStore } from '../../../stores/workspaceStore';
-import { IPCResponse } from '../../../types';
 import { debounce } from 'lodash';
 
 interface DesignerProps {

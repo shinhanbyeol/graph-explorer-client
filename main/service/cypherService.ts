@@ -1,5 +1,5 @@
 import { Edge } from '../../renderer/hooks/useGraphology';
-import { AGE_FLAVOR } from './types/common';
+import { AGE_FLAVOR } from '../connections/enum';
 
 export default class CypherService {
   type: AGE_FLAVOR;

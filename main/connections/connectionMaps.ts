@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import GraphRepository from './graphRepository';
-import { AGE_FLAVOR, Config_AGE, ConnectionPool } from './types';
+import { Config_AGE, ConnectionPool } from './types';
+import { AGE_FLAVOR } from './enum';
 
 export default class ConnectionMaps {
   connections: Map<string, ConnectionPool>;

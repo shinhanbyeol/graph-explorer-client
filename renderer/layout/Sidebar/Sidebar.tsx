@@ -1,4 +1,4 @@
-import { Box, forwardRef, Flex, Icon, BoxProps, Text } from '@chakra-ui/react';
+import { Box, forwardRef, Flex, Icon, BoxProps } from '@chakra-ui/react';
 import Styles from './Sidebar.module.scss';
 import { useState } from 'react';
 import { useRouter } from 'next/router';

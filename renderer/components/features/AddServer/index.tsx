@@ -1,6 +1,4 @@
 import React from 'react';
-import { AGE_FLAVOR, IPCResponse } from '../../../types';
-
 import {
   ModalBody,
   ModalCloseButton,
@@ -19,6 +17,7 @@ import {
   Select,
 } from '@chakra-ui/react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
+import { AGE_FLAVOR } from '../../../utils/enum';
 
 const AddServerModal = ({ onClose }: { onClose: () => void }) => {
   const ageVersions = ['1.5.0', '1.4.0'];

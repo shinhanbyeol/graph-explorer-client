@@ -2,7 +2,8 @@ import { types as pgTypes, Pool as PgPool } from 'pg';
 import { Pool as AgensPool } from 'node-agens-pg';
 import { setAGETypes } from 'node-age-pg';
 import { getQuery } from './ageFlavorManager';
-import { AGE_FLAVOR } from './types';
+import { AGE_FLAVOR } from './enum';
+
 
 const AGE_LATEST_VERSION = process.env.AGE_LATEST_VERSION;
 const AGENSGRAPH_LATEST_VERSION = process.env.AGENSGRAPH_LATEST_VERSION;

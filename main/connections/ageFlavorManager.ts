@@ -1,6 +1,6 @@
 import ageSqls, { type Sqls } from './sql/AGE/sqls';
 import agensgraphSqls from './sql/AGENSGRAPH/sqls';
-import { AGE_FLAVOR } from './types';
+import { AGE_FLAVOR } from './enum';
 
 /**
  * @description Get SQL Query

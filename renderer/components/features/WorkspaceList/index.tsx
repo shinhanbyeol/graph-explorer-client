@@ -1,6 +1,5 @@
-import { Box, Button, Container, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Container, Stack } from '@chakra-ui/react';
 import { memo, useEffect, useState } from 'react';
-import { IPCResponse, ServerResponse, WorkspaceResponse } from '../../../types';
 
 // Styles
 import Styles from './Workspace.module.scss';
@@ -33,6 +32,7 @@ const Workspace = ({ server, graph, sessionId }: WorkspaceProps) => {
           workspaceName: workspaces[clickedWorkspace].name,
           workspaceSqlPath: workspaces[clickedWorkspace].sqlPath,
           workspaceJsonPath: workspaces[clickedWorkspace].jsonPath,
+          workspaceResultPath: workspaces[clickedWorkspace].resultPath,
         },
       });
     }

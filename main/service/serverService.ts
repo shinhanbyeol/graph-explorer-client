@@ -1,5 +1,5 @@
-import { AGE_FLAVOR } from '../connections/types';
-import { Server, _Server } from './types/common';
+import { _Server } from './types/common';
+import { AGE_FLAVOR } from '../connections/enum';
 import { convertKeysToCamelCase } from '../util/snakeToCamel';
 
 export default class ServerService {
@@ -25,10 +25,12 @@ export default class ServerService {
    * @returns
    * @memberof ServerService
    */
-  async getServers(): Promise<Server[]> {
+  async getServers(): Promise<ServerResponse[]> {
     const sql = `SELECT * FROM tb_servers`;
     const servers = (await this._sqlitePromise(sql, [])) as _Server[];
-    return servers.map((server) => convertKeysToCamelCase(server)) as Server[];
+    return servers.map((server) =>
+      convertKeysToCamelCase(server),
+    ) as ServerResponse[];
   }
 
   /**
@@ -37,12 +39,12 @@ export default class ServerService {
    * @returns
    * @memberof ServerService
    */
-  async getServer(serverId): Promise<Server> {
+  async getServer(serverId): Promise<ServerResponse> {
     const server = (await this._sqlitePromise(
       `SELECT * FROM tb_servers WHERE id = ?`,
       [serverId],
     )) as _Server;
-    return convertKeysToCamelCase(server[0]) as Server;
+    return convertKeysToCamelCase(server[0]) as ServerResponse;
   }
 
   /**

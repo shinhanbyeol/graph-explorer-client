@@ -1,5 +1,4 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
-import { IPCResponse, ServerResponse } from '../../../types';
 
 // styles
 import Styels from './HomeBar.module.scss';
@@ -77,7 +76,9 @@ const HomeBar = ({ visible }: HomeBarProps) => {
         mt={'1rem'}
         gap={2}
       >
-        <Text fontWeight={'bold'} fontSize={'lg'}>Database Explorer</Text>
+        <Text fontWeight={'bold'} fontSize={'lg'}>
+          Database Explorer
+        </Text>
         <Button
           size={'sm'}
           variant={'outline'}

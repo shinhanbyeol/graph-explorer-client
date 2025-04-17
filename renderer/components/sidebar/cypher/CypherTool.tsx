@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
-import { ExecuteQueryResponseBy, IPCResponse } from '../../../types';
 import { debounce } from 'lodash';
 import useGraphology from '../../../hooks/useGraphology';
 import { useGraphologyStore } from '../../../stores';
@@ -31,8 +30,13 @@ function CypherTool({ visible }: CypherToolProps) {
     workspaceJsonPath,
   } = router.query;
   const { importGraphologyData } = useGraphology();
-  const { setEdgesCount, setNodesCount, setLastExecutedTime, setLabels } =
-    useGraphologyStore();
+  const {
+    graphology,
+    setEdgesCount,
+    setNodesCount,
+    setLastExecutedTime,
+    setLabels,
+  } = useGraphologyStore();
 
   // isFetching state
   const [fetching, setFetching] = useState<boolean>(false);
@@ -60,7 +64,7 @@ function CypherTool({ visible }: CypherToolProps) {
         .then((res: IPCResponse<ExecuteQueryResponseBy>) => {
           if (res?.success) {
             const queryResult = res.data;
-            importGraphologyData(queryResult.result);
+            importGraphologyData(graphology, queryResult.result);
             setLabels(queryResult.labels);
             setNodesCount(queryResult.result.nodes.length);
             setEdgesCount(queryResult.result.edges.length);
@@ -154,9 +158,7 @@ function CypherTool({ visible }: CypherToolProps) {
             color={'white'}
             bg={'black'}
             cursor={'pointer'}
-            onClick={() =>
-              handleRunQuery(`MATCH (n)-[e]->(m) return n,e,m;`)
-            }
+            onClick={() => handleRunQuery(`MATCH (n)-[e]->(m) return n,e,m;`)}
           >
             <TagLabel>*</TagLabel>
           </Tag>

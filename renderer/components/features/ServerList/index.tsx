@@ -1,6 +1,5 @@
 import React from 'react';
 import Styels from './ServerList.module.scss';
-import { ServerResponse } from '../../../types';
 
 import { Accordion } from '@chakra-ui/react';
 import Server from '../ServerItem';
