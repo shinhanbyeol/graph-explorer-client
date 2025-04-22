@@ -12,8 +12,8 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
-import AddServer from '../../features/AddServer';
-import ServerList from '../../features/ServerList';
+import AddServer from '../../../features/AddServer';
+import ServerList from '../../../features/ServerList';
 import { PiDatabaseFill } from 'react-icons/pi';
 
 interface HomeBarProps {

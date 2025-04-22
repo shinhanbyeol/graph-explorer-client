@@ -56,7 +56,7 @@ const Result = ({ workspaceResultPath }: { workspaceResultPath: string }) => {
 
   useEffect(() => {
     window.ipc.invoke('writeFile/fullPath', {
-      filePath: path.join(workspaceResultPath,`result.json`),
+      filePath: path.join(workspaceResultPath, `result.json`),
       fileData: JSON.stringify(graphology?.export(), null, 2),
     });
   }, [lastExecutedTime]);

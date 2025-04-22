@@ -105,7 +105,9 @@ const CodeEditor = ({
   }, [
     sessionId,
     graph,
+    graphology,
     importGraphologyData,
+    setLabels,
     setNodesCount,
     setEdgesCount,
     setLastExecutedTime,

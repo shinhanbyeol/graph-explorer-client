@@ -11,9 +11,9 @@ import {
   Divider,
   Text,
 } from '@chakra-ui/react';
-import { useGraphologyStore } from '../../../stores';
+import { useGraphologyStore } from '../../../../stores';
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
-import { useWorkspaceStore } from '../../../stores/workspaceStore';
+import { useWorkspaceStore } from '../../../../stores/workspaceStore';
 import { debounce } from 'lodash';
 
 interface DesignerProps {

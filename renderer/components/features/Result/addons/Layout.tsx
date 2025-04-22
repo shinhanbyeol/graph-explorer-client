@@ -74,8 +74,10 @@ const Layout = ({ lastExecutedTime }: LayoutProps) => {
           }}
           cursor={'pointer'}
         >
-          {SlectAbleLayout.map((item) => (
-            <option value={item.value}>{item.name}</option>
+          {SlectAbleLayout.map((item, index) => (
+            <option key={index + item.value} value={item.value}>
+              {item.name}
+            </option>
           ))}
         </SelectField>
       </Text>

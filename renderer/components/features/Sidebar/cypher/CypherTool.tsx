@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { debounce } from 'lodash';
-import useGraphology from '../../../hooks/useGraphology';
-import { useGraphologyStore } from '../../../stores';
+import useGraphology from '../../../../hooks/useGraphology';
+import { useGraphologyStore } from '../../../../stores';
 
 import {
   Divider,
@@ -80,6 +80,7 @@ function CypherTool({ visible }: CypherToolProps) {
   }, [
     sessionId,
     graph,
+    graphology,
     importGraphologyData,
     setNodesCount,
     setEdgesCount,

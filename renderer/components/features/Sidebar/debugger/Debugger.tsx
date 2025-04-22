@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Select, Button, Text, Textarea, Box } from '@chakra-ui/react';
-import { useDebugStore } from '../../../stores';
+import { useDebugStore } from '../../../../stores';
 import {
   DEBUGGERLIST,
   DEBUGGER_SAMPLE_PARAMS,
   DEBUGGER_DESCRIPTION,
   DEBUGGER_PARAM_TYPE,
-} from '../../../constants/debugFeat';
+} from '../../../../constants/debugFeat';
 
 interface IpcDebuggerProps {
   visible: boolean;

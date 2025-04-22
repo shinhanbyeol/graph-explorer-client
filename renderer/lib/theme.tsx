@@ -75,12 +75,12 @@ const theme = extendTheme({
           border: 'none',
           _hover: {
             bg: 'black',
-            'box-shadow': 'inset 0px 2px 16px 0px rgb(209, 209, 237);',
+            boxShadow: 'inset 0px 2px 16px 0px rgb(209, 209, 237);',
             color: 'white',
           },
           _active: {
             bg: 'black',
-            'box-shadow': '0px 2px 16px 0px rgb(209, 209, 237);',
+            boxShadow: '0px 2px 16px 0px rgb(209, 209, 237);',
             color: 'white',
           },
         },
