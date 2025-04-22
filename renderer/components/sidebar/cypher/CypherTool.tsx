@@ -114,6 +114,8 @@ function CypherTool({ visible }: CypherToolProps) {
       direction={['column']}
       spacing={'2rem'}
       divider={<Divider color="black" />}
+      width={'100%'}
+      overflow={'hidden'}
     >
       <Text fontWeight="bold" fontSize={'lg'} textAlign={'center'}>
         Cypher Tool
@@ -124,7 +126,7 @@ function CypherTool({ visible }: CypherToolProps) {
           Match by Node Label
         </Text>
 
-        <HStack>
+        <HStack flexWrap={'wrap'}>
           <Tag
             key={'allNode'}
             color={'white'}
@@ -141,6 +143,7 @@ function CypherTool({ visible }: CypherToolProps) {
               bg={'black'}
               cursor={'pointer'}
               onClick={() => handleRunQuery(`MATCH (n:${label}) return n;`)}
+              minW={`max-content`}
             >
               <TagLabel>{`${label} (${nodeMeta[label]})`}</TagLabel>
             </Tag>
@@ -152,7 +155,7 @@ function CypherTool({ visible }: CypherToolProps) {
         <Text fontSize={'md'} mb={2}>
           Match by Edge Label
         </Text>
-        <HStack>
+        <HStack flexWrap={'wrap'}>
           <Tag
             key={'allEdge'}
             color={'white'}
@@ -171,6 +174,7 @@ function CypherTool({ visible }: CypherToolProps) {
               onClick={() =>
                 handleRunQuery(`MATCH (n)-[e:${label}]->(m) return n,e,m;`)
               }
+              minW={`max-content`}
             >
               <TagLabel>{`${label} (${edgeMeta[label]})`}</TagLabel>
             </Tag>
