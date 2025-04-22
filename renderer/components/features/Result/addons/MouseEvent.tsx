@@ -18,13 +18,10 @@ const MouseEvent = ({
         setIsDragging(true);
       },
       upNode: (e) => {
-        setSelectedObjects([e.node]);
         setDragElements(null);
         setIsDragging(false);
       },
-      upEdge: (e) => {
-        setSelectedObjects([e.edge]);
-      },
+      upEdge: (e) => {},
       mouseup: (e) => {
         if (dragElements) {
           setDragElements(null);
@@ -45,6 +42,12 @@ const MouseEvent = ({
           e.original.preventDefault();
           e.original.stopPropagation();
         }
+      },
+      doubleClickNode: (e) => {
+        setSelectedObjects([e.node]);
+      },
+      doubleClickEdge: (e) => {
+        setSelectedObjects([e.edge]);
       },
       clickStage: (e) => {
         setSelectedObjects([]);

@@ -51,10 +51,11 @@ function Information({
       marginLeft={'1rem'}
       maxH={'50%'}
       minW={'300px'}
-      bg={'fff'}
+      bg={'#ffffff99'}
       color={'black'}
       borderColor={'black'}
       boxShadow={'lg'}
+      userSelect={'text'}
     >
       <Flex
         justifyContent={'space-between'}

@@ -69,6 +69,7 @@ const Result = ({ workspaceResultPath }: { workspaceResultPath: string }) => {
       flexDirection={'column'}
       justifyContent={'center'}
       position={'relative'}
+      className={Styles.Result}
     >
       {graphology?.nodes().length > 0 || graphology?.edges().length > 0 ? (
         webGL2Supported ? (

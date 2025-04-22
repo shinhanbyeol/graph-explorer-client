@@ -14,6 +14,8 @@
   "dependencies": {
     "@bitnine-oss/ag-driver": "^0.1.0",
     "@react-sigma/core": "^4.0.3",
+    "@react-sigma/layout-core": "^5.0.2",
+    "@react-sigma/layout-forceatlas2": "^5.0.2",
     "@uiw/react-codemirror": "^4.23.0",
     "antlr4ts": "^0.5.0-alpha.4",
     "chakra-ui-contextmenu": "^1.0.5",
@@ -22,6 +24,7 @@
     "formik": "^2.4.6",
     "graphology": "^0.25.4",
     "graphology-layout": "^0.6.1",
+    "graphology-layout-forceatlas2": "^0.10.1",
     "immer": "^10.1.1",
     "lodash": "^4.17.21",
     "pg": "^8.11.5",

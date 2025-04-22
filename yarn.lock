@@ -2275,6 +2275,25 @@
   resolved "https://registry.yarnpkg.com/@react-sigma/core/-/core-4.0.3.tgz#b97c1cf835df84a1401d715b176997f27c0fe7a9"
   integrity sha512-/y/U1GH18xjGYMWNYXXqHGJ+8tHf+e4z1i0gNSm9iuhch8sGFJooO3VfyPJlBox42Wl4/gCapQhOHAfVW0pRtw==
 
+"@react-sigma/core@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@react-sigma/core/-/core-5.0.2.tgz#ea01eca8329df618a6419417e93dcf93bb5e74b8"
+  integrity sha512-yzGYD0Oxp8rVqhCckCRee0tMr3fJmkIB6JJFOL6McNYEek5AAyC1WRon0Dw/IaRVhNbSt8lZHplrMVgKkWw4Ng==
+
+"@react-sigma/layout-core@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@react-sigma/layout-core/-/layout-core-5.0.2.tgz#81c8bacee39dc753940ca5c865367d561acf2eaa"
+  integrity sha512-kBD/nkgKMBlDOlYslaG/n71JiWXEYwcTIhfTBkYqXh8Ukipxm/O4TdUpJeyUpjcLT/92tRnTN7m8KaGGWNpH+A==
+  dependencies:
+    "@react-sigma/core" "^5.0.2"
+
+"@react-sigma/layout-forceatlas2@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@react-sigma/layout-forceatlas2/-/layout-forceatlas2-5.0.2.tgz#b69bf8af6ea81708ea8f1344c72f3f2892bfd818"
+  integrity sha512-+x05LMmjVOtwiu9EJ7CbgtRVDo/0jNT6dXqjLWvXPVy7BD/uRF4iMs/1KhSmnR5R9TTbznkpUd4iX7o/CLkxRg==
+  dependencies:
+    "@react-sigma/layout-core" "^5.0.2"
+
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-4.6.0.tgz#3c7c9c46e678feefe7a2e5bb609d3dbd665ffb3f"
@@ -4063,6 +4082,13 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.11,
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.11.tgz#4183e4e8bf08bb6e05bbb2f7d2e0c8f712ca40e3"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
 
+graphology-layout-forceatlas2@^0.10.1:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/graphology-layout-forceatlas2/-/graphology-layout-forceatlas2-0.10.1.tgz#741842135609d82d12db5a5fdf74672062c28205"
+  integrity sha512-ogzBeF1FvWzjkikrIFwxhlZXvD2+wlY54lqhsrWprcdPjopM2J9HoMweUmIgwaTvY4bUYVimpSsOdvDv1gPRFQ==
+  dependencies:
+    graphology-utils "^2.1.0"
+
 graphology-layout@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/graphology-layout/-/graphology-layout-0.6.1.tgz#e7c1d65c022e337b11c977e2d30abe4076a0327d"
@@ -4076,7 +4102,7 @@ graphology-types@^0.24.7:
   resolved "https://registry.yarnpkg.com/graphology-types/-/graphology-types-0.24.7.tgz#7d630a800061666bfa70066310f56612e08b7bee"
   integrity sha512-tdcqOOpwArNjEr0gNQKCXwaNCWnQJrog14nJNQPeemcLnXQUUGrsCWpWkVKt46zLjcS6/KGoayeJfHHyPDlvwA==
 
-graphology-utils@^2.3.0, graphology-utils@^2.5.2:
+graphology-utils@^2.1.0, graphology-utils@^2.3.0, graphology-utils@^2.5.2:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/graphology-utils/-/graphology-utils-2.5.2.tgz#4d30d6e567d27c01f105e1494af816742e8d2440"
   integrity sha512-ckHg8MXrXJkOARk56ZaSCM1g1Wihe2d6iTmz1enGOz4W/l831MBCKSayeFQfowgF8wd+PQ4rlch/56Vs/VZLDQ==
@@ -5720,16 +5746,7 @@ streamsearch@^1.1.0:
   resolved "https://registry.yarnpkg.com/streamsearch/-/streamsearch-1.1.0.tgz#404dd1e2247ca94af554e841a8ef0eaa238da764"
   integrity sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==
 
-"string-width-cjs@npm:string-width@^4.2.0":
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
-  integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
-  dependencies:
-    emoji-regex "^8.0.0"
-    is-fullwidth-code-point "^3.0.0"
-    strip-ansi "^6.0.1"
-
-"string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+"string-width-cjs@npm:string-width@^4.2.0", "string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -5754,14 +5771,7 @@ string_decoder@^1.1.1:
   dependencies:
     safe-buffer "~5.2.0"
 
-"strip-ansi-cjs@npm:strip-ansi@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
-  integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
-  dependencies:
-    ansi-regex "^5.0.1"
-
-strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -6183,16 +6193,7 @@ wildcard@^2.0.0:
   resolved "https://registry.yarnpkg.com/wildcard/-/wildcard-2.0.1.tgz#5ab10d02487198954836b6349f74fff961e10f67"
   integrity sha512-CC1bOL87PIWSBhDcTrdeLo6eGT7mCFtrg0uIJtqJUFyK+eJnzl8A1niH56uu7KMa5XFrtiV+AQuHO3n7DsHnLQ==
 
-"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
-  integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
-  dependencies:
-    ansi-styles "^4.0.0"
-    string-width "^4.1.0"
-    strip-ansi "^6.0.0"
-
-wrap-ansi@^7.0.0:
+"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
