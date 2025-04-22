@@ -19,18 +19,18 @@ interface SidebarProps {
 
 const MenuItemBox = forwardRef<
   {
-    active?: boolean;
+    active: string;
   } & BoxProps,
   'div'
 >((props, ref) => (
   <Box
     width={50}
     height={50}
-    bg={props.active ? 'background' : 'black'}
+    bg={props.active === 'true' ? 'background' : 'black'}
+    color={props.active === 'true' ? 'black' : 'background'}
     textAlign={'center'}
     p={'25%'}
     fontSize={'x-large'}
-    color={props.active ? 'black' : 'background'}
     _hover={{
       bg: 'background',
       cursor: 'pointer',
@@ -71,7 +71,7 @@ export const Sidebar = ({ x }: SidebarProps) => {
           backgroundColor={'black'}
         >
           <MenuItemBox
-            active={sidebar === 'home'}
+            active={JSON.stringify(sidebar === 'home')}
             onClick={() => {
               setSidebar('home');
               toggleHide('home');
@@ -84,7 +84,7 @@ export const Sidebar = ({ x }: SidebarProps) => {
             />
           </MenuItemBox>
           <MenuItemBox
-            active={sidebar === 'cypher-tool'}
+            active={JSON.stringify(sidebar === 'cypher-tool')}
             onClick={() => {
               setSidebar('cypher-tool');
               toggleHide('cypher-tool');
@@ -93,7 +93,7 @@ export const Sidebar = ({ x }: SidebarProps) => {
             <Icon as={PiGraphThin} />
           </MenuItemBox>
           <MenuItemBox
-            active={sidebar === 'designer'}
+            active={JSON.stringify(sidebar === 'designer')}
             onClick={() => {
               setSidebar('designer');
               toggleHide('designer');
@@ -105,7 +105,7 @@ export const Sidebar = ({ x }: SidebarProps) => {
             />
           </MenuItemBox>
           <MenuItemBox
-            active={sidebar === 'debug'}
+            active={JSON.stringify(sidebar === 'debug')}
             onClick={() => {
               setSidebar('debug');
               toggleHide('debug');

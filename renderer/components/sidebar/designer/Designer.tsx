@@ -122,8 +122,7 @@ const Desinger = ({ visible }: DesignerProps) => {
         <FormLabel>Labels</FormLabel>
         <Select
           onChange={handleSelect}
-          defaultValue={null}
-          value={selectedLabel}
+          value={selectedLabel ?? null}
           unselectable="on"
           placeholder="Select Label..."
         >

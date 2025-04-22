@@ -62,9 +62,12 @@ const IpcDebugger = ({ visible }: IpcDebuggerProps) => {
       padding={'1rem'}
     >
       <Text fontSize={'4xl'}>AGE-Viewer-2.0 IPC Debugger</Text>
-      <Select onChange={handleSelectChange} value={tester}>
+      <Select onChange={handleSelectChange} value={tester ?? ''}>
+        <option value="" disabled>
+          Select a feature
+        </option>
         {DEBUGGERLIST.map((item) => (
-          <option>{item}</option>
+          <option key={item}>{item}</option>
         ))}
       </Select>
       <Text fontSize={'2xl'} marginTop={'3rem'}>
@@ -85,8 +88,7 @@ const IpcDebugger = ({ visible }: IpcDebuggerProps) => {
           border: '1px solid #ccc',
         }}
         backgroundColor={'#fff'}
-        value={parmField}
-        defaultValue={param ? JSON.stringify(param, null, 2) : ''}
+        value={parmField ?? ''}
         onChange={handleOnChangeParams}
       />
       <br />

@@ -60,7 +60,7 @@ const HomeBar = ({ visible }: HomeBarProps) => {
     <div
       className={Styels.Root}
       style={{
-        display: visible ? '' : 'none',
+        display: visible ? 'flex' : 'none',
       }}
     >
       <Heading
