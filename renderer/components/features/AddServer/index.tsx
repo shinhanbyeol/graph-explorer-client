@@ -92,7 +92,7 @@ const AddServerModal = ({ onClose }: { onClose: () => void }) => {
       {(props) => (
         <Form>
           <ModalContent>
-            <ModalHeader>Add new server</ModalHeader>
+            <ModalHeader>Add new Database</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <Container display={'flex'} flexDirection={'column'} rowGap={2}>

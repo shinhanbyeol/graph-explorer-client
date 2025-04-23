@@ -89,6 +89,7 @@ const EditServerModal = ({
         password: String(server.password),
       }}
       onSubmit={async (values, actions) => {
+        console.log('values', values);
         const edit = await handleEditServer(values, actions);
         if (!edit) {
           actions.setSubmitting(false);
@@ -103,7 +104,7 @@ const EditServerModal = ({
       {(props) => (
         <Form>
           <ModalContent>
-            <ModalHeader>Add new server</ModalHeader>
+            <ModalHeader>Edit Database</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <Container display={'flex'} flexDirection={'column'} rowGap={2}>

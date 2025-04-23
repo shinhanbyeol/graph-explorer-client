@@ -114,14 +114,15 @@ export default class ServerService {
    * @memberof ServerService
    */
   updateServer = async (server) => {
-    const { id, name, host, port, user, password, serverType, version } =
+    const { id, name, host, port, database, user, password, serverType, version } =
       server;
     await this.metaDb.run(
-      `UPDATE tb_servers SET name = ?, host = ?, port = ?, user = ?, password = ?, server_type = ?, version = ?, updated_at = ?  WHERE id = ?`,
+      `UPDATE tb_servers SET name = ?, host = ?, port = ?, database = ?, user = ?, password = ?, server_type = ?, version = ?, updated_at = ?  WHERE id = ?`,
       [
         name,
         host,
         port,
+        database,
         user,
         password,
         serverType,
