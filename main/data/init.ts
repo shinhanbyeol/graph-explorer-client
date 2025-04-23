@@ -37,5 +37,5 @@ const _initSqls: {
 };
 
 const initSqls = new Map(Object.entries(_initSqls));
-export const initTableCount = Object.keys(initSqls).length;
+export const initTableCount = Object.keys(_initSqls).length;
 export default initSqls;

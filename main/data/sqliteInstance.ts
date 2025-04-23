@@ -20,6 +20,7 @@ class appDatabase {
               console.log('need init app database');
               // init table check to ./init.ts
               initSqls.forEach((_sql, tableName) => {
+                console.log('initSqls', _sql);
                 this.appData.exec(_sql, (err) => {
                   if (err) {
                     console.error(err.message);
@@ -28,7 +29,7 @@ class appDatabase {
                 });
               });
             }
-          });
+          })
 
         // check table schema and alter table if needed // ko: 테이블 스키마를 확인하고 필요에 따라 테이블을 변경합니다.
         initSqls.forEach((_sql, tableName) => {
@@ -44,6 +45,9 @@ class appDatabase {
               },
             )
             .all((err, rows: { sql: string }[]) => {
+              if (rows.length === 0) {
+                return;
+              }
               const originalSql = normalizeDDL(rows[0].sql);
               const initSql = normalizeDDL(_sql);
 
