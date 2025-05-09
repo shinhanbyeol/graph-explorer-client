@@ -7,6 +7,8 @@ import React, {
 } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { Box, Button, Progress, Text } from '@chakra-ui/react';
+import graphmlImporter from 'graphology-graphml';
+import Graph from 'graphology';
 
 // Styles
 import Styles from './CodeEditor.module.scss';
@@ -112,6 +114,43 @@ const CodeEditor = ({
     setEdgesCount,
     setLastExecutedTime,
   ]);
+
+  /**
+   * @title GraphML Import
+   * @description for graphml import function
+   * @param graphML string
+   */
+  const handleGraphMLImport = useCallback(
+    (graphML: string) => {
+      if (graphology) {
+        const graphData = graphmlImporter.parse(Graph, graphML);
+        const exportedGraph = graphData.export();
+        graphology.clear();
+        graphology.import({
+          nodes: exportedGraph.nodes,
+          edges: exportedGraph.edges,
+        });
+        // node pos init
+        graphology.forEachNode((node, attr) => {
+          graphology.setNodeAttribute(node, 'x', Math.random() * 100);
+          graphology.setNodeAttribute(node, 'y', Math.random() * 100);
+        });
+        // node properties init
+        graphology.forEachNode((node, attr) => {
+          graphology.setNodeAttribute(node, 'label', node);
+          graphology.setNodeAttribute(node, 'properties', {});
+        });
+        graphology.forEachEdge((edge, attr) => {
+          graphology.setEdgeAttribute(edge, 'label', edge);
+          graphology.setEdgeAttribute(edge, 'properties', {});
+        });
+      }
+      // console.log('GraphML import completed', graphology);
+      const lastExecutedTime = Date.now();
+      setLastExecutedTime(lastExecutedTime);
+    },
+    [graphology],
+  );
 
   // 포커스 관련 이벤트 등록
   useEffect(() => {
@@ -227,6 +266,9 @@ const CodeEditor = ({
             justifyContent={'flex-end'}
             zIndex={'sticky'}
           >
+            <Button onClick={() => handleGraphMLImport(code)}>
+              <Text>Import GraphML</Text>
+            </Button>
             <Button
               variant={'submit'}
               size={'xl'}
